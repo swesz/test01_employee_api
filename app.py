@@ -1,11 +1,14 @@
+# web API for HTTP requests
 from flask import Flask, request, jsonify
+# SQL database functionality inside Python
 from flask_sqlalchemy import SQLAlchemy
+# JSON formatting for API responses
 from flask_marshmallow import Marshmallow
 
 # Initialize Flask app
 app = Flask(__name__)
 
-# Database configuration
+# Database configuration (store records in employees.db)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///employees.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -13,7 +16,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
-# Employee Model
+# Employee Model (table)
 class Employee(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
@@ -27,7 +30,7 @@ class Employee(db.Model):
         self.salary = salary
         self.department = department
 
-# Employee Schema
+# Employee Schema (convert employee objects into JSON format)
 class EmployeeSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Employee
@@ -96,6 +99,6 @@ def delete_employee(id):
     db.session.commit()
     return jsonify({"message": "Employee deleted successfully"})
 
-# Run the app
+# Run the app (start Flask server)
 if __name__ == '__main__':
     app.run(debug=True)
