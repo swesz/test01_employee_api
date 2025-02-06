@@ -8,7 +8,7 @@ This project is a sample **HR Employee Data REST API**, designed to mimic HR sof
 ## Technologies Used
 - Python, Flask (Backend)
 - SQLite + SQLAlchemy (Database)
-- GitHub (Version Control)
+- Marshmallow (Data serialization)
 
 ## How to Run
 1. Clone this repository: 
