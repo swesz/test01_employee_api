@@ -25,8 +25,8 @@ python app.py
 ## API Endpoints
 - **GET** `/employees` – Retrieve employee list
 - **POST** `/employees` – Add new employee
-- **PUT** `/employees/ID` – Update an existing employee by ID
-- **DELETE** `/employees/ID` – Deletes an employee by ID
+- **PUT** `/employees/<id>` – Update an existing employee by ID
+- **DELETE** `/employees/<id>` – Deletes an employee by ID
 
 ## License
 MIT License
